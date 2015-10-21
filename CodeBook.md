@@ -16,7 +16,8 @@ www.smartlab.ws
 ==================================================================
 
 
-In synthesis, the dataset have: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ." [ref: features_info.txt]
+
+In synthesis, the dataset have: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ." [features_info.txt]
 
 The dataset contains two principals types of data:
 
@@ -27,29 +28,29 @@ Both files contains the same columns/variables quantity with their measurement, 
 This variables has 2 domains, indicates by prefix "t" or "f":
 - Time domain signals (ex. tBodyAcc-mean()-X )
 - Frequency domain signals (ex. fBodyAcc-mean()-X )
-and "- Features are normalized and bounded within [-1,1]." [ref README.txt]
+and "- Features are normalized and bounded within [-1,1]." [README.txt]
 
-The rows/observations in DTrain and DTest are different and must be linked easily since "- Each feature vector is a row on the text file." [ref: README.txt]
+The rows/observations in DTrain and DTest are different and must be linked easily since "- Each feature vector is a row on the text file." [README.txt]
 
 The Dataset have 5 additional files, that complements the information about the observations
 
 - LTrain: Training Labels [y_train.txt] (activity identifiers 1..6 - described as WALKING...LAYING)
 - LTest: Test Labels [y_test.txt] (activity identifiers 1..6 - described as WALKING...LAYING)
 and
-- STrain: Training Subject [subject_train.txt] (volunteers who performed the training 1..30)
-- STest:  Test Subject [subject_test.txt] (volunteers who performed the test 1..30)
+- STrain: Training Subject. [subject_train.txt] (volunteers who performed the training 1..30)
+- STest:  Test Subject. [subject_test.txt] (volunteers who performed the test 1..30)
 and
-- ActLabels: 6 Activity Labels used to describe the itens in LTrain and LTest [activity_labels.txt]
+- ActLabels: 6 Activity Labels used to describe the itens in LTrain and LTest. [activity_labels.txt]
 
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
 1. Bind the same data in only one file;
-      DTrain    + LTrain    + STrain = FullTrain
-      DTest     + LTest     + STest  = FullTest
-      FullTrain + FullTest  = AllSet
+      1.1. DTrain    + LTrain    + STrain = FullTrain
+      1.2. DTest     + LTest     + STest  = FullTest
+      1.3. FullTrain + FullTest  = AllSet
 2. Select only necessary infomation to use in our analysis;
-      extract only Mean() and Std() for each measurement. 
+      2.1. extract only Mean() and Std() for each measurement. 
 3. and Combine the describe information to become more readable.
-      AllSet + ActLabels = CompleteSet
+      3.1. AllSet + ActLabels = CompleteSet
 
 and GO!

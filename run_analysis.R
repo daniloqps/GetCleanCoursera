@@ -5,7 +5,6 @@
 #Step 3: Uses descriptive activity names to name the activities in the data set
 #Step 4: Appropriately labels the data set with descriptive variable names. 
 #Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
 options("scipen"=-100, "digits" = 7)
 options("scipen"=100, "digits" = 7)
 library(data.table)
@@ -26,17 +25,25 @@ file_X_test             <- paste(dir, dir_test,  "X_test.txt",          sep = "\
 file_y_test             <- paste(dir, dir_test,  "y_test.txt",          sep = "\\")
 file_subject_test       <- paste(dir, dir_test,  "subject_test.txt",    sep = "\\")
 
-ActLabels <- fread(file_activity_labels, col.names = c("ID", "DESC"), header = FALSE,  stringsAsFactors = FALSE)
-Features  <- t(fread(file_features,  drop = 1, col.names = c("DESC"), header = FALSE,  stringsAsFactors = FALSE))
+ActLabels <- fread(file_activity_labels, col.names = c("id", "desc"), header = FALSE,  
+                   stringsAsFactors = FALSE)
+Features  <- t(fread(file_features,  drop = 1, col.names = c("desc"), header = FALSE, 
+                     stringsAsFactors = FALSE))
 
-DTrain    <- fread(file_X_train, col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
-DTest     <- fread(file_X_test,  col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+DTrain    <- fread(file_X_train, col.names = Features, header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+DTest     <- fread(file_X_test,  col.names = Features, header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
-LTrain    <- fread(file_y_train, col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
-LTest     <- fread(file_y_test,  col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+LTrain    <- fread(file_y_train, col.names = c("activity"), header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+LTest     <- fread(file_y_test,  col.names = c("activity"), header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
-STrain    <- fread(file_subject_train, col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
-STest     <- fread(file_subject_test , col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+STrain    <- fread(file_subject_train, col.names = c("subject"), header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+STest     <- fread(file_subject_test , col.names = c("subject"), header = FALSE, 
+                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
 # FREE FEATURES
 rm(Features)
@@ -60,15 +67,26 @@ rm(FullTest)
 
 #TRANSFORM AND FREE
 TidyData <- CompleteSet %>% 
-                select(contains("LABEL"), contains("SUBJECT"), 
-                         contains("mean"),contains("std")) %>%
-                  mutate(LABEL = as.character(ActLabels$DESC[LABEL]))
+                select(contains("activity"), contains("subject"), 
+                         contains("mean()"),contains("std()")) %>%
+                  mutate(activity = as.character(ActLabels$desc[activity]))
 rm(CompleteSet)
 rm(ActLabels)
 
 #SUMMARIZE AND FREE
-Output <- TidyData %>% group_by(LABEL, SUBJECT) %>% summarize_each(funs(mean))
+Output <- TidyData %>% group_by(activity, subject) %>% summarize_each(funs(mean))
 rm(TidyData)
+
+
+write.table(Output, file = "output.txt", row.names = FALSE);
+
+rm(Output)
+rm(dir, dir_test, dir_train, file_activity_labels, file_features,  
+   file_X_train , file_y_train, file_subject_train, file_X_test, 
+   file_y_test, file_subject_test )
+
+
+str(Output)
 
 
 #Rules

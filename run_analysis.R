@@ -9,6 +9,9 @@
 options("scipen"=-100, "digits" = 7)
 options("scipen"=100, "digits" = 7)
 library(data.table)
+library(tidyr)
+library(dplyr)
+setwd("C:\\Users\\Danilo\\Desktop\\GetCleanCoursera")
 
 # FILES CONSTANTS
 dir                     <- "UCI HAR Dataset"
@@ -26,32 +29,46 @@ file_subject_test       <- paste(dir, dir_test,  "subject_test.txt",    sep = "\
 ActLabels <- fread(file_activity_labels, col.names = c("ID", "DESC"), header = FALSE,  stringsAsFactors = FALSE)
 Features  <- t(fread(file_features,  drop = 1, col.names = c("DESC"), header = FALSE,  stringsAsFactors = FALSE))
 
-DTrain    <- fread(file_X_train, col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
-DTest     <- fread(file_X_test,  col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
+DTrain    <- fread(file_X_train, col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+DTest     <- fread(file_X_test,  col.names = Features, header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
-LTrain    <- fread(file_y_train, col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
-LTest     <- fread(file_y_test,  col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
+LTrain    <- fread(file_y_train, col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+LTest     <- fread(file_y_test,  col.names = c("LABEL"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
-STrain    <- fread(file_subject_train, col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
-STest     <- fread(file_subject_test , col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=10 ) #ALERT - 10 only test
+STrain    <- fread(file_subject_train, col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+STest     <- fread(file_subject_test , col.names = c("SUBJECT"), header = FALSE, stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
 
+# FREE FEATURES
+rm(Features)
+
+# BIND AND FREE TRAIN SET
 FullTrain <- cbind(LTrain, STrain, DTrain)
+rm(LTrain)
+rm(STrain)
+rm(DTrain)
+
+#BIND AND FREE TEST SET
 FullTest  <- cbind(LTest,  STest,  DTest)
+rm(LTest)
+rm(STest)
+rm(DTest)
 
+#BIND AND FREE FULLTRAIN AND FULLTEST
 CompleteSet <- rbind(FullTrain, FullTest)
+rm(FullTrain)
+rm(FullTest)
 
+#TRANSFORM AND FREE
+TidyData <- CompleteSet %>% 
+                select(contains("LABEL"), contains("SUBJECT"), 
+                         contains("mean"),contains("std")) %>%
+                  mutate(LABEL = as.character(ActLabels$DESC[LABEL]))
+rm(CompleteSet)
+rm(ActLabels)
 
-
-
-x<- c(1:31)
-
-class(x)
-DTrain <- DTrain[FALSE,]
-class(DTrain)
-DTest[[10,561]]
-
-str(LTest)
-
+#SUMMARIZE AND FREE
+Output <- TidyData %>% group_by(LABEL, SUBJECT) %>% summarize_each(funs(mean))
+rm(TidyData)
 
 
 #Rules

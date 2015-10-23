@@ -75,5 +75,39 @@ And after, link both in one
 
             CompleteSet <- rbind(FullTrain, FullTest) (using rbind because all the variables already together)
 
-            
+Remember, before begin next step, free all variables, to previne memory errors, using:
 
+            rm(): "remove and rm can be used to remove objects." R Documentation
+            
+Step 3: Filter and Transform
+
+In this step, some information is unnecessary, so, we need to filter only columns Activity, Subject and all other if contains words "mean()" and "std()":
+
+            select(contains("activity"), contains("subject"), contains("mean()"),contains("std()"))
+            
+Explaining, "select()" is an function of {dplyr} package.
+            
+            "dplyr provides a flexible grammar of data manipulation. It's the next iteration of plyr, focused on tools for working with data frames (hence the d in the name)." R Documentation
+            
+            "select() keeps only the variables you mention; rename() keeps all variables" R Documentation
+            
+Taking advantage, we can transform informations unreadable, giving a description. Only variable possible to do this is "Activity", initially "numeric", but using "activity_labels.txt", we can transform.
+
+Mutate() is another function of {dplyr} package.
+
+            "Mutate adds new variables and preserves existing;" R Documentation
+            
+And the script
+
+            mutate(activity = as.character(ActLabels$desc[activity])
+
+All commands described above, we can do in one single command line, using chain function '%>%' of {dplyr} package
+
+            "These functions providing an alternative way of calling dplyr (and other data manipulation) 
+            functions that you read can from left to right." R Documentation
+            
+            TidyData <- CompleteSet %>%  select(contains("activity"), contains("subject"), 
+                                                contains("mean()"),contains("std()")) %>%
+                                                            mutate(activity = as.character(ActLabels$desc[activity]))
+
+            

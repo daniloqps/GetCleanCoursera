@@ -48,33 +48,28 @@ rm(Features)
 
 # BIND AND FREE TRAIN SET
 FullTrain <- cbind(LTrain, STrain, DTrain)
-rm(LTrain)
-rm(STrain)
-rm(DTrain)
+rm(LTrain, STrain, DTrain)
 
 #BIND AND FREE TEST SET
 FullTest  <- cbind(LTest,  STest,  DTest)
-rm(LTest)
-rm(STest)
-rm(DTest)
+rm(LTest, STest, DTest)
 
 #BIND AND FREE FULLTRAIN AND FULLTEST
 CompleteSet <- rbind(FullTrain, FullTest)
-rm(FullTrain)
-rm(FullTest)
+rm(FullTrain, FullTest)
 
 #TRANSFORM AND FREE
 TidyData <- CompleteSet %>% 
                 select(contains("activity"), contains("subject"), 
                          contains("mean()"),contains("std()")) %>%
                   mutate(activity = as.character(ActLabels$desc[activity]))
-rm(CompleteSet)
-rm(ActLabels)
+rm(CompleteSet, ActLabels)
 
 #SUMMARIZE AND FREE
 Output <- TidyData %>% group_by(activity, subject) %>% summarize_each(funs(mean))
 rm(TidyData)
 
+#SET OPTIONS TO SCIENTIFIC NOTATION
 options("scipen"=-100)
 write.table(Output, file = "output.txt", row.names = FALSE)
 options("scipen"=0)
@@ -84,28 +79,3 @@ rm(Output)
 rm(dir, dir_test, dir_train, file_activity_labels, file_features,  
    file_X_train , file_y_train, file_subject_train, file_X_test, 
    file_y_test, file_subject_test )
-
-#Rules
-
-#Please upload the tidy data set created in step 5 of the instructions. Please upload your data set 
-#as a txt file created with write.table() using row.name=FALSE (do not cut and paste a dataset directly 
-#into the text box, as this may cause errors saving your submission).
-
-      #Has the student submitted a tidy data set? Either a wide or a long form of the data is acceptable if 
-      #it meets the tidy data principles of week 1 (Each variable you measure should be in one column, 
-      #Each different observation of that variable should be in a different row).
-      
-      
-#Please submit a link to a Github repo with the code for performing your analysis. 
-#The code should have a file run_analysis.R in the main directory that can be run as 
-#long as the Samsung data is in your working directory. The output should be the tidy 
-#data set you submitted for part 1. You should include a README.md in the repo describing 
-#how the script works and the code book describing the variables.
-
-      #Did the student submit a Github repo with the required scripts?
-      
-      #Was code book submitted to GitHub that modifies and updates the 
-      #codebooks available to you with the data to indicate all the variables and 
-      #summaries you calculated, along with units, and any other relevant information?
-
-      #I was able to follow the README in the directory that explained what the analysis files did. 

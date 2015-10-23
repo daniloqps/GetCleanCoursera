@@ -56,4 +56,24 @@ The other files contains basically the same parameters in fread() to load.
             nrows: -1 (in the production, full load) or 100 (only to test, partial load)
             drop: 1 (only to features.txt, because doesn't need the id column)
             
+Step 2: Link the same type of data in one file
+
+To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use cbind and rbind functions.
+
+            {base} cbind, rbind: "Take a sequence of vector, matrix or data-frame arguments and combine by columns or rows,
+            respectively" R Documentation
+
+So, we need to link:
+
+            Train Set (FullTrain) : subject_train.txt +  y_train.txt + X_train.txt
+            Test Set (FullTest)   : subject_test.txt  +  y_test.txt +  X_test.txt             
+
+            FullTrain <- cbind(LTrain, STrain, DTrain)
+            FullTest  <- cbind(LTest,  STest,  DTest)
+
+And after, link both in one
+
+            CompleteSet <- rbind(FullTrain, FullTest) (using rbind because all the variables already together)
+
+            
 

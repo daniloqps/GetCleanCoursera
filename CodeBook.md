@@ -3,17 +3,15 @@
 This file was built to describe all processes applied to get and clean a complex dataset using R Programming Language.
 Below, is reproduced the property information about this dataset, copied from the original [README.txt] 
 
-==================================================================
-Human Activity Recognition Using Smartphones Dataset
-Version 1.0
-==================================================================
-Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
-Smartlab - Non Linear Complex Systems Laboratory
-DITEN - Università degli Studi di Genova.
-Via Opera Pia 11A, I-16145, Genoa, Italy.
-activityrecognition@smartlab.ws
-www.smartlab.ws
-==================================================================
+            Human Activity Recognition Using Smartphones Dataset
+            Version 1.0
+            
+            Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+            Smartlab - Non Linear Complex Systems Laboratory
+            DITEN - Università degli Studi di Genova.
+            Via Opera Pia 11A, I-16145, Genoa, Italy.
+            activityrecognition@smartlab.ws
+            www.smartlab.ws
 
 
 
@@ -26,13 +24,14 @@ The dataset contains two principals types of data:
 
 Both files contains the same columns/variables quantity with their measurement, totaling 561, described in [features.txt]
 This variables has 2 domains, indicates by prefix "t" or "f":
+
 - Time domain signals (ex. tBodyAcc-mean()-X )
 - Frequency domain signals (ex. fBodyAcc-mean()-X )
 and "- Features are normalized and bounded within [-1,1]." [README.txt]
 
 The rows/observations in DTrain and DTest are different and must be linked easily since "- Each feature vector is a row on the text file." [README.txt]
 
-The Dataset have 5 additional files, that complements the information about the observations
+The dataset have 5 additional files, that complements the information about the observations
 
 - LTrain: Training Labels [y_train.txt] (activity identifiers 1..6 - described as WALKING...LAYING)
 - LTest: Test Labels [y_test.txt] (activity identifiers 1..6 - described as WALKING...LAYING)

@@ -5,12 +5,10 @@
 #Step 3: Uses descriptive activity names to name the activities in the data set
 #Step 4: Appropriately labels the data set with descriptive variable names. 
 #Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-options("scipen"=-100, "digits" = 7)
-options("scipen"=100, "digits" = 7)
+
 library(data.table)
 library(tidyr)
 library(dplyr)
-setwd("C:\\Users\\Danilo\\Desktop\\GetCleanCoursera")
 
 # FILES CONSTANTS
 dir                     <- "UCI HAR Dataset"
@@ -31,19 +29,19 @@ Features  <- t(fread(file_features,  drop = 1, col.names = c("desc"), header = F
                      stringsAsFactors = FALSE))
 
 DTrain    <- fread(file_X_train, col.names = Features, header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 DTest     <- fread(file_X_test,  col.names = Features, header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 
 LTrain    <- fread(file_y_train, col.names = c("activity"), header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 LTest     <- fread(file_y_test,  col.names = c("activity"), header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 
 STrain    <- fread(file_subject_train, col.names = c("subject"), header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 STest     <- fread(file_subject_test , col.names = c("subject"), header = FALSE, 
-                   stringsAsFactors = FALSE, nrows=100 ) #ALERT - 10 only test
+                   stringsAsFactors = FALSE, nrows=-1 ) #ALERT - 10 only test
 
 # FREE FEATURES
 rm(Features)
@@ -77,17 +75,15 @@ rm(ActLabels)
 Output <- TidyData %>% group_by(activity, subject) %>% summarize_each(funs(mean))
 rm(TidyData)
 
+options("scipen"=-100)
+write.table(Output, file = "output.txt", row.names = FALSE)
+options("scipen"=0)
 
-write.table(Output, file = "output.txt", row.names = FALSE);
-
+#FREE ALL
 rm(Output)
 rm(dir, dir_test, dir_train, file_activity_labels, file_features,  
    file_X_train , file_y_train, file_subject_train, file_X_test, 
    file_y_test, file_subject_test )
-
-
-str(Output)
-
 
 #Rules
 

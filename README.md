@@ -1,4 +1,4 @@
-# GetCleanCoursera in R
+# Getting and Cleaning Data in R
 
 Project to Coursera Specialization - Getting and Cleaning Data
 

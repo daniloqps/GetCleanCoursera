@@ -1,4 +1,4 @@
-#CodeBook.md
+#Code Book of UCI HAR Dataset
 
 This file was built to describe all processes applied to get and clean a complex dataset using R Programming Language.
 Below, is reproduced the property information about this dataset, copied from the original. [README.txt]() 
@@ -13,12 +13,28 @@ Below, is reproduced the property information about this dataset, copied from th
             activityrecognition@smartlab.ws
             www.smartlab.ws
 
-
+##Study Design
 
 In synthesis, the dataset have: 
 
             "The features selected for this database come from the accelerometer 
-            and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.". [features_info.txt]()
+            and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.". [features_info.txt]
+
+This data was collected 
+
+            "The experiments have been carried out with a group of 30 volunteers
+            within an age bracket of 19-48 years. Each person performed six
+            activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING,
+            STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the
+            waist. Using its embedded accelerometer and gyroscope, we captured
+            3-axial linear acceleration and 3-axial angular velocity at a constant
+            rate of 50Hz. The experiments have been video-recorded to label the
+            data manually. The obtained dataset has been randomly partitioned into
+            two sets, where 70% of the volunteers was selected for generating the
+            training data and 30% the test data. " [README.txt]
+
+
+## Codebook
 
 The dataset contains 2 principals types of data:
 
@@ -33,11 +49,11 @@ This variables has 2 domains, indicates by prefix "t" or "f":
 
 and 
 
-            "- Features are normalized and bounded within [-1,1]." [README.txt]()
+            "- Features are normalized and bounded within [-1,1]." [README.txt]
 
 The rows/observations in DTrain and DTest are different and must be linked easily since 
 
-            "- Each feature vector is a row on the text file." [README.txt]()
+            "- Each feature vector is a row on the text file." [README.txt]
 
 The dataset have 6 additional files, that complements the information about the observations
 
@@ -50,6 +66,7 @@ The dataset have 6 additional files, that complements the information about the 
 - ActLabels: 6 Activity Labels used to describe the itens in LTrain and LTest. [activity_labels.txt]()
 - Features: Name of the measurements totally 561. [features.txt]()
 
+## Normalizing
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
 1. Bind the same data in only one file
@@ -58,13 +75,14 @@ So, to normalize the raw-data described above and turn in tidy-data, we need to 
             DTest     + LTest     + STest  = FullTest
             FullTrain + FullTest  = AllSet
 
-2. Select only necessary infomation to use in our analysis
+2. Combine the describe information to become more readable
+            
+            AllSet + ActLabels = CompleteSet
+
+3. Select only necessary infomation to use in analysis
 
             extract only 'Mean()' and 'Std()' for each measurement. 
 
-3. Combine the describe information to become more readable
-            
-            AllSet + ActLabels + Features = CompleteSet
 
 
-and the dataset is prepared to do what you want.
+and the dataset is prepared to do what you need.

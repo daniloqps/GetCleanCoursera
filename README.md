@@ -73,7 +73,7 @@ So, we need to link:
             Train Set (FullTrain) : subject_train.txt +  y_train.txt + X_train.txt
             Test Set (FullTest)   : subject_test.txt  +  y_test.txt +  X_test.txt             
             
-            ```R
+            ```r
             FullTrain <- cbind(LTrain, STrain, DTrain)
             FullTest  <- cbind(LTest,  STest,  DTest)
             ```

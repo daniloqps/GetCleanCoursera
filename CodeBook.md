@@ -43,15 +43,15 @@ and
 
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
-- 1. Bind the same data in only one file
-- 1.1 DTrain    + LTrain    + STrain = FullTrain 
-- 1.2 DTest     + LTest     + STest  = FullTest
-- 1.3 FullTrain + FullTest  = AllSet
+- Bind the same data in only one file
+            - DTrain    + LTrain    + STrain = FullTrain 
+            - DTest     + LTest     + STest  = FullTest
+            - FullTrain + FullTest  = AllSet
 
-- 2. Select only necessary infomation to use in our analysis
-- 2.1 extract only Mean() and Std() for each measurement. 
+- Select only necessary infomation to use in our analysis
+            - extract only Mean() and Std() for each measurement. 
 
-- 3. and Combine the describe information to become more readable.
-- 3.1 AllSet + ActLabels = CompleteSet
+- Combine the describe information to become more readable.
+            - AllSet + ActLabels = CompleteSet
 
 and GO!

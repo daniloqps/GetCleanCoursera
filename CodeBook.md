@@ -20,7 +20,7 @@ In synthesis, the dataset have:
             "The features selected for this database come from the accelerometer 
             and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.". [features_info.txt]
 
-This data was collected 
+and was collected 
 
             "The experiments have been carried out with a group of 30 volunteers
             within an age bracket of 19-48 years. Each person performed six

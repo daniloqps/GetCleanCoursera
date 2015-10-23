@@ -73,13 +73,16 @@ So, we need to link:
             Train Set (FullTrain) : subject_train.txt +  y_train.txt + X_train.txt
             Test Set (FullTest)   : subject_test.txt  +  y_test.txt +  X_test.txt             
 
-            ```python
+```r
             FullTrain <- cbind(LTrain, STrain, DTrain)
             FullTest  <- cbind(LTest,  STest,  DTest)
-            ```
+```
+
 And after, link both in one
 
+```r
             CompleteSet <- rbind(FullTrain, FullTest) (using 'rbind()' because all the variables already together)
+```
 
 Remember, before begin next step, free all variables, to previne memory errors, using:
 
@@ -89,8 +92,10 @@ Remember, before begin next step, free all variables, to previne memory errors, 
 
 In this step, some information is unnecessary, so, we need to filter only columns 'Activity', 'Subject' and all other if contains words 'mean()' and 'std()':
 
+```r
             select(contains("activity"), contains("subject"), contains("mean()"),contains("std()"))
-            
+```
+
 Explaining, "select()" is an function of {dplyr} package.
             
             "dplyr provides a flexible grammar of data manipulation.
@@ -107,7 +112,9 @@ Taking advantage, we can transform informations unreadable, giving a description
             
 and the script
 
+```r
             mutate(activity = as.character(ActLabels$desc[activity])
+```
 
 All commands described above, we can do in one single command line, using chain function '%>%' of {dplyr} package
 
@@ -115,10 +122,12 @@ All commands described above, we can do in one single command line, using chain 
             calling dplyr (and other data manipulation) functions that you read
             can from left to right." R Documentation
             
+```r
             TidyData <- CompleteSet %>%  
                         select(contains("activity"), contains("subject"), 
                               contains("mean()"),contains("std()")) %>%
                         mutate(activity = as.character(ActLabels$desc[activity]))
+```
 
 ##Step 4: Group and Summarize
 
@@ -134,9 +143,11 @@ Summarize has 2 type: 'summarize()' to individually collumn and 'summarize_each(
             
 and the script
 
+```r
             Output <- TidyData %>% 
                         group_by(activity, subject) %>% 
                         summarize_each(funs(mean))
+```
 
 ##Step 5: Saving and Going Home!
 
@@ -168,9 +179,11 @@ To change this, we can set some options in R, described below
             
 and the script
 
+```r
             options("scipen"=-100)
             write.table(Output, file = "output.txt", row.names = FALSE);
             options("scipen" = 0) # to turn back
+```
             
             
 and Going Home!

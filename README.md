@@ -1,14 +1,18 @@
 # GetCleanCoursera
+
 Task to Coursera Specialization - Getting and Cleaning Data
 
-References: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
-Raw Data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+            References: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+            
+            Raw Data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+
 
 This file contains a detailed instruction about the technical process to Get and Clean the "Human Activity Recognition Using Smartphones" Dataset (see references) using R Programming Language.
 
 R contains many packages to facilitate the process to Get and Clean any type of Datasets, but is necessary to find the best to supply.
 
-The first step is understand the rules to Get and Clean dataset to scientific analysis, explained below.
+To start, we need to understand the rules to Get and Clean dataset to scientific analysis, explained below.
 
 In the begin, the data is called RAW Data.
 
@@ -32,7 +36,9 @@ At the end, we got Processed Data or Tidy Data
 
 Now, we'll link this information with R Functions.
 
+================
 Step 1: Loading
+================
 
 R Language has many functions to load data, but in this case, the Dataset contains ~ 100mb, so we needed a very efficient function:
             

@@ -46,7 +46,7 @@ R Language has many functions to load data, but in this case, the Dataset contai
 
 In this dataset, some informations was allocated in different files
 
-- Data Files: ''subject_train.txt', 'X_train.txt', 'y_train.txt', 'subject_test.txt', 'X_test.txt', 'y_test.txt'
+- Data Files: 'subject_train.txt', 'X_train.txt', 'y_train.txt', 'subject_test.txt', 'X_test.txt', 'y_test.txt'
 - Description Files: 'activity_labels.txt', 'features_info.txt'  
 
 The files 'X_train.txt' and 'X_test.txt' contains a lot of columns and we can bind the name of them direct in 'fread()'. So, we need to load 'features_info.txt' before, using the same 'fread()' function, but converting rows in columns to adjust with the parameter col.names in fread(). To do this we use t() function

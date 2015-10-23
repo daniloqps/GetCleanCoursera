@@ -8,7 +8,7 @@ Project to Coursera Specialization - Getting and Cleaning Data
 
 
 
-This file contains a detailed instruction about the technical process to Get and Clean the "Human Activity Recognition Using Smartphones" Dataset (see references) using R Programming Language.
+This file contains a detailed instruction about the technical process to Get and Clean the "Human Activity Recognition Using Smartphones" dataset (see references) using R Programming Language.
 
 R contains many packages to facilitate the process to Get and Clean any type of Datasets, but is necessary to find the best to supply.
 
@@ -46,14 +46,14 @@ R Language has many functions to load data, but in this case, the Dataset contai
 
 In this dataset, some informations was allocated in different files
 
-- Data Files: subject_train.txt, X_train.txt, y_train.txt, subject_test.txt, X_test.txt, y_test.txt
-- Description Files: activity_labels.txt, features_info.txt  
+- Data Files: ''subject_train.txt', 'X_train.txt', 'y_train.txt', 'subject_test.txt', 'X_test.txt', 'y_test.txt'
+- Description Files: 'activity_labels.txt', 'features_info.txt'  
 
-The files X_train.txt and X_test.txt contains a lot of columns and we can bind the name of them direct in fread(). So, we need to load features_info.txt before, using the same fread() function, but converting rows in columns to adjust with the parameter col.names in fread(). To do this we use t() function
+The files 'X_train.txt' and 'X_test.txt' contains a lot of columns and we can bind the name of them direct in 'fread()'. So, we need to load 'features_info.txt' before, using the same 'fread()' function, but converting rows in columns to adjust with the parameter col.names in fread(). To do this we use t() function
 
             {base} t : "Given a matrix or data.frame x, t returns the transpose of x" R Documentation
 
-The other files contains basically the same parameters in fread() to load.
+The other files contains basically the same parameters in 'fread()' to load.
 
             file: the name of the file
             col.names: a fixes column names as (id, desc) or (activity) or (subject)
@@ -66,7 +66,7 @@ The other files contains basically the same parameters in fread() to load.
 Step 2: Link the same type of data in one file
 ================
 
-To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use cbind and rbind functions.
+To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use 'cbind()' and 'rbind()' functions.
 
             {base} cbind, rbind: "Take a sequence of vector, matrix or data-frame arguments
             and combine by columns or rows, respectively" R Documentation
@@ -81,7 +81,7 @@ So, we need to link:
 
 And after, link both in one
 
-            CompleteSet <- rbind(FullTrain, FullTest) (using rbind because all the variables already together)
+            CompleteSet <- rbind(FullTrain, FullTest) (using 'rbind()' because all the variables already together)
 
 Remember, before begin next step, free all variables, to previne memory errors, using:
 
@@ -91,7 +91,7 @@ Remember, before begin next step, free all variables, to previne memory errors, 
 Step 3: Filter and Transform
 ================
 
-In this step, some information is unnecessary, so, we need to filter only columns Activity, Subject and all other if contains words "mean()" and "std()":
+In this step, some information is unnecessary, so, we need to filter only columns 'Activity', 'Subject' and all other if contains words 'mean()' and 'std()':
 
             select(contains("activity"), contains("subject"), contains("mean()"),contains("std()"))
             
@@ -103,9 +103,9 @@ Explaining, "select()" is an function of {dplyr} package.
             
             "select() keeps only the variables you mention;" R Documentation
             
-Taking advantage, we can transform informations unreadable, giving a description. Only variable we can do this is "Activity", initially "numeric", but using "activity_labels.txt", we can transform.
+Taking advantage, we can transform informations unreadable, giving a description. Only variable we can do this is 'Activity', initially 'numeric', but using 'activity_labels.txt', we can transform.
 
-Mutate() is another function of {dplyr} package.
+'mutate()' is another function of {dplyr} package.
 
             "Mutate adds new variables and preserves existing;" R Documentation
             
@@ -128,12 +128,12 @@ All commands described above, we can do in one single command line, using chain 
 Step 4: Group and Summarize
 ================
 
-This dataset has a lot of rows and invividually we can't analyze clearly, but using group_by and summarize calculating average value, it' easiest.
+This dataset has a lot of rows and invividually we can't analyze clearly, but using 'group_by()' and 'summarize()' calculating average value, it' easiest.
 
             " The group_by function takes an existing tbl and converts it
             into a grouped tbl where operations are performed 'by group'" R Documentation
             
-Summarize has 2 type: summarize() to individually collumn and summarize_each() to many collumn simultaneously. It's our case.
+Summarize has 2 type: 'summarize()' to individually collumn and 'summarize_each()' to many collumn simultaneously. It's our case.
 
             "Apply one or more functions to one or more columns. 
             Grouping variables are always excluded from modification." R Documentation

@@ -81,7 +81,8 @@ So, we need to link:
 And after, link both in one
 
 ```r
-            CompleteSet <- rbind(FullTrain, FullTest) (using 'rbind()' because all the variables already together)
+            #using 'rbind()' because all the variables already together
+            CompleteSet <- rbind(FullTrain, FullTest) 
 ```
 
 Remember, before begin next step, free all variables, to previne memory errors, using:

@@ -19,8 +19,8 @@ In synthesis, the dataset have: "The features selected for this database come fr
 
 The dataset contains two principals types of data:
 
-- DTrain: Training set. [X_train.txt]
-- DTest: Test set. [X_test.txt]
+- DTrain: Training set [x_train.txt]
+- DTest: Test set [ X_test.txt ]
 
 Both files contains the same columns/variables quantity with their measurement, totaling 561, described in [features.txt]
 This variables has 2 domains, indicates by prefix "t" or "f":
@@ -43,20 +43,18 @@ and
 
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
-Bind the same data in only one file
+1. Bind the same data in only one file
 
             DTrain    + LTrain    + STrain = FullTrain
             DTest     + LTest     + STest  = FullTest
             FullTrain + FullTest  = AllSet
 
-Select only necessary infomation to use in our analysis
+2. Select only necessary infomation to use in our analysis
 
             extract only Mean() and Std() for each measurement. 
 
-Combine the describe information to become more readable
+3. Combine the describe information to become more readable
             
             AllSet + ActLabels = CompleteSet
 
 
-
-and GO!

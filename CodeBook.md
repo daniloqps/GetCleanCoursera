@@ -1,7 +1,7 @@
 #CodeBook.md
 
 This file was built to describe all processes applied to get and clean a complex dataset using R Programming Language.
-Below, is reproduced the property information about this dataset, copied from the original [README.txt]() 
+Below, is reproduced the property information about this dataset, copied from the original. [README.txt]() 
 
             Human Activity Recognition Using Smartphones Dataset
             Version 1.0
@@ -15,12 +15,12 @@ Below, is reproduced the property information about this dataset, copied from th
 
 
 
-In synthesis, the dataset have: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ." [features_info.txt]()
+In synthesis, the dataset have: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.". [features_info.txt]()
 
 The dataset contains two principals types of data:
 
-- DTrain: Training set [X_train.txt]()
-- DTest: Test set [X_test.txt]()
+- DTrain: Training set. [X_train.txt]()
+- DTest: Test set. [X_test.txt]()
 
 Both files contains the same columns/variables quantity with their measurement, totaling 561, described in [features.txt]()
 This variables has 2 domains, indicates by prefix "t" or "f":

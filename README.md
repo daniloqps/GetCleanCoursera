@@ -1,6 +1,6 @@
-# GetCleanCoursera
+# GetCleanCoursera in R
 
-Task to Coursera Specialization - Getting and Cleaning Data
+Project to Coursera Specialization - Getting and Cleaning Data
 
             References: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
             
@@ -101,16 +101,15 @@ Explaining, "select()" is an function of {dplyr} package.
             It's the next iteration of plyr, focused on tools for working 
             with data frames (hence the d in the name)." R Documentation
             
-            "select() keeps only the variables you mention; rename() 
-            keeps all variables" R Documentation
+            "select() keeps only the variables you mention;" R Documentation
             
-Taking advantage, we can transform informations unreadable, giving a description. Only variable possible to do this is "Activity", initially "numeric", but using "activity_labels.txt", we can transform.
+Taking advantage, we can transform informations unreadable, giving a description. Only variable we can do this is "Activity", initially "numeric", but using "activity_labels.txt", we can transform.
 
 Mutate() is another function of {dplyr} package.
 
             "Mutate adds new variables and preserves existing;" R Documentation
             
-And the script
+and the script
 
             mutate(activity = as.character(ActLabels$desc[activity])
 
@@ -125,4 +124,61 @@ All commands described above, we can do in one single command line, using chain 
                               contains("mean()"),contains("std()")) %>%
                         mutate(activity = as.character(ActLabels$desc[activity]))
 
+================
+Step 4: Group and Summarize
+================
+
+This dataset has a lot of rows and invividually we can't analyze clearly, but using group_by and summarize calculating average value, it' easiest.
+
+            " The group_by function takes an existing tbl and converts it
+            into a grouped tbl where operations are performed 'by group'" R Documentation
             
+Summarize has 2 type: summarize() to individually collumn and summarize_each() to many collumn simultaneously. It's our case.
+
+            "Apply one or more functions to one or more columns. 
+            Grouping variables are always excluded from modification." R Documentation
+            
+and the script
+
+            Output <- TidyData %>% 
+                        group_by(activity, subject) %>% 
+                        summarize_each(funs(mean))
+
+================
+Step 5: Saving and Going Home!
+================
+
+To finish our job, the data must be saved in external file and 'write.table()' do this.
+
+            "write.table prints its required argument x 
+            (after converting it to a data frame if it is not one nor a matrix) 
+            to a file or connection." Documentation
+            
+But, our measurement, in initial state come in this format
+
+            2.79215504074074e-01
+
+if write.table with default R parameters, turn in
+
+            0.279215504074074
+            
+To change this, we can set some options in R, described below
+
+            options(): "Allow the user to set and examine a variety
+            of global options which affect the way in which R computes
+            and displays its results." R Documentation
+            
+            param scipen: "scipen: integer. A penalty to be applied when deciding
+            to print numeric values in fixed or exponential notation. 
+            Positive values bias towards fixed and negative towards scientific
+            notation: fixed notation will be preferred unless it is more than
+            scipen digits wider." R Documentation
+            
+and the script
+
+            options("scipen"=-100)
+            write.table(Output, file = "output.txt", row.names = FALSE);
+            options("scipen" = 0) # to turn back
+            
+            
+and Going Home!

@@ -20,7 +20,7 @@ In synthesis, the dataset have: "The features selected for this database come fr
 The dataset contains two principals types of data:
 
 - DTrain: Training set [X_train.txt](X_train.txt)
-- DTest: Test set [X_test.txt]
+- DTest: Test set _'X_test.txt'_
 
 Both files contains the same columns/variables quantity with their measurement, totaling 561, described in [features.txt]
 This variables has 2 domains, indicates by prefix "t" or "f":

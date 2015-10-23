@@ -130,7 +130,7 @@ Step 4: Group and Summarize
 
 This dataset has a lot of rows and invividually we can't analyze clearly, but using 'group_by()' and 'summarize()' calculating average value, it' easiest.
 
-            " The group_by function takes an existing tbl and converts it
+            "The group_by function takes an existing tbl and converts it
             into a grouped tbl where operations are performed 'by group'" R Documentation
             
 Summarize has 2 type: 'summarize()' to individually collumn and 'summarize_each()' to many collumn simultaneously. It's our case.
@@ -152,7 +152,7 @@ To finish our job, the data must be saved in external file and 'write.table()' d
 
             "write.table prints its required argument x 
             (after converting it to a data frame if it is not one nor a matrix) 
-            to a file or connection." Documentation
+            to a file or connection." R Documentation
             
 But, our measurement, in initial state come in this format
 

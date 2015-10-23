@@ -62,7 +62,9 @@ The other files contains basically the same parameters in fread() to load.
             nrows: -1 (in the production, full load) or 100 (only to test, partial load)
             drop: 1 (only to features.txt, because doesn't need the id column)
             
+================
 Step 2: Link the same type of data in one file
+================
 
 To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use cbind and rbind functions.
 
@@ -85,7 +87,9 @@ Remember, before begin next step, free all variables, to previne memory errors, 
 
             rm(): "remove and rm can be used to remove objects." R Documentation
             
+================
 Step 3: Filter and Transform
+================
 
 In this step, some information is unnecessary, so, we need to filter only columns Activity, Subject and all other if contains words "mean()" and "std()":
 

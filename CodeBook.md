@@ -1,4 +1,4 @@
-#Code Book of UCI HAR Dataset
+#Code Book of UCI HAR Dataset to Coursera Specialization Project
 
 This file was built to describe all processes applied to get and clean a complex dataset using R Programming Language.
 Below, is reproduced the property information about this dataset, copied from the original. [README.txt]() 

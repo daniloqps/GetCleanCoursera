@@ -44,7 +44,7 @@ and
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
 - Bind the same data in only one file
-            - DTrain    + LTrain    + STrain = FullTrain 
+            - DTrain    + LTrain    + STrain = FullTrain
             - DTest     + LTest     + STest  = FullTest
             - FullTrain + FullTest  = AllSet
 
@@ -53,5 +53,6 @@ So, to normalize the raw-data described above and turn in tidy-data, we need to 
 
 - Combine the describe information to become more readable.
             - AllSet + ActLabels = CompleteSet
+
 
 and GO!

@@ -36,9 +36,8 @@ At the end, we got Processed Data or Tidy Data
 
 Now, we'll link this information with R Functions.
 
-================
-Step 1: Loading
-================
+
+##Step 1: Loading
 
 R Language has many functions to load data, but in this case, the Dataset contains ~ 100mb, so we needed a very efficient function:
             
@@ -62,9 +61,7 @@ The other files contains basically the same parameters in 'fread()' to load.
             nrows: -1 (in the production, full load) or 100 (only to test, partial load)
             drop: 1 (only to features.txt, because doesn't need the id column)
             
-================
-Step 2: Link the same type of data in one file
-================
+##Step 2: Link the same type of data in one file
 
 To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use 'cbind()' and 'rbind()' functions.
 
@@ -87,9 +84,7 @@ Remember, before begin next step, free all variables, to previne memory errors, 
 
             rm(): "remove and rm can be used to remove objects." R Documentation
             
-================
-Step 3: Filter and Transform
-================
+##Step 3: Filter and Transform
 
 In this step, some information is unnecessary, so, we need to filter only columns 'Activity', 'Subject' and all other if contains words 'mean()' and 'std()':
 
@@ -124,9 +119,7 @@ All commands described above, we can do in one single command line, using chain 
                               contains("mean()"),contains("std()")) %>%
                         mutate(activity = as.character(ActLabels$desc[activity]))
 
-================
-Step 4: Group and Summarize
-================
+##Step 4: Group and Summarize
 
 This dataset has a lot of rows and invividually we can't analyze clearly, but using 'group_by()' and 'summarize()' calculating average value, it' easiest.
 
@@ -144,9 +137,7 @@ and the script
                         group_by(activity, subject) %>% 
                         summarize_each(funs(mean))
 
-================
-Step 5: Saving and Going Home!
-================
+##Step 5: Saving and Going Home!
 
 To finish our job, the data must be saved in external file and 'write.table()' do this.
 

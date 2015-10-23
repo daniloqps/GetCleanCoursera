@@ -60,8 +60,8 @@ Step 2: Link the same type of data in one file
 
 To facilitate the analysis, we need to link separated files, to view the data more easily. To do this, we use cbind and rbind functions.
 
-            {base} cbind, rbind: "Take a sequence of vector, matrix or data-frame arguments and combine by columns or rows,
-            respectively" R Documentation
+            {base} cbind, rbind: "Take a sequence of vector, matrix or data-frame arguments
+            and combine by columns or rows, respectively" R Documentation
 
 So, we need to link:
 
@@ -87,9 +87,12 @@ In this step, some information is unnecessary, so, we need to filter only column
             
 Explaining, "select()" is an function of {dplyr} package.
             
-            "dplyr provides a flexible grammar of data manipulation. It's the next iteration of plyr, focused on tools for working with data frames (hence the d in the name)." R Documentation
+            "dplyr provides a flexible grammar of data manipulation.
+            It's the next iteration of plyr, focused on tools for working 
+            with data frames (hence the d in the name)." R Documentation
             
-            "select() keeps only the variables you mention; rename() keeps all variables" R Documentation
+            "select() keeps only the variables you mention; rename() 
+            keeps all variables" R Documentation
             
 Taking advantage, we can transform informations unreadable, giving a description. Only variable possible to do this is "Activity", initially "numeric", but using "activity_labels.txt", we can transform.
 
@@ -103,11 +106,13 @@ And the script
 
 All commands described above, we can do in one single command line, using chain function '%>%' of {dplyr} package
 
-            "These functions providing an alternative way of calling dplyr (and other data manipulation) 
-            functions that you read can from left to right." R Documentation
+            "These functions providing an alternative way of 
+            calling dplyr (and other data manipulation) functions that you read
+            can from left to right." R Documentation
             
-            TidyData <- CompleteSet %>%  select(contains("activity"), contains("subject"), 
-                                                contains("mean()"),contains("std()")) %>%
-                                                            mutate(activity = as.character(ActLabels$desc[activity]))
+            TidyData <- CompleteSet %>%  
+                        select(contains("activity"), contains("subject"), 
+                              contains("mean()"),contains("std()")) %>%
+                        mutate(activity = as.character(ActLabels$desc[activity]))
 
             

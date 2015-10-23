@@ -25,8 +25,8 @@ The dataset contains two principals types of data:
 Both files contains the same columns/variables quantity with their measurement, totaling 561, described in [features.txt]()
 This variables has 2 domains, indicates by prefix "t" or "f":
 
-- Time domain signals ( ex. tBodyAcc-mean()-X )
-- Frequency domain signals ( ex. fBodyAcc-mean()-X )
+- Time domain signals. ex: tBodyAcc-mean()-X
+- Frequency domain signals. ex: fBodyAcc-mean()-X 
 and "- Features are normalized and bounded within [-1,1]." [README.txt]()
 
 The rows/observations in DTrain and DTest are different and must be linked easily since "- Each feature vector is a row on the text file." [README.txt]()
@@ -35,10 +35,10 @@ The dataset have 5 additional files, that complements the information about the 
 
 - LTrain: Training Labels [y_train.txt]() (activity identifiers 1..6 - described as WALKING...LAYING)
 - LTest: Test Labels [y_test.txt]() (activity identifiers 1..6 - described as WALKING...LAYING)
-and
+
 - STrain: Training Subject. [subject_train.txt]() (volunteers who performed the training 1..30)
 - STest:  Test Subject. [subject_test.txt]() (volunteers who performed the test 1..30)
-and
+
 - ActLabels: 6 Activity Labels used to describe the itens in LTrain and LTest. [activity_labels.txt]()
 
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
@@ -51,7 +51,7 @@ So, to normalize the raw-data described above and turn in tidy-data, we need to 
 
 2. Select only necessary infomation to use in our analysis
 
-            extract only Mean() and Std() for each measurement. 
+            extract only 'Mean()' and 'Std()' for each measurement. 
 
 3. Combine the describe information to become more readable
             

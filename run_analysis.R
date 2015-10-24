@@ -6,6 +6,19 @@
 #Step 4: Appropriately labels the data set with descriptive variable names. 
 #Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+install.packages("data.table")
+install.packages("tidyr")
+getwd()
+setwd("C:\\Dados Pessoais\\DaniloPinheiro\\DataScience - Coursera\\03 - Getting and Cleaning Data\\Project")
+
+# Script run_analysis.R
+
+#Step 1: Merges the training and the test sets to create one data set.
+#Step 2: Extracts only the measurements on the mean and standard deviation for each measurement. 
+#Step 3: Uses descriptive activity names to name the activities in the data set
+#Step 4: Appropriately labels the data set with descriptive variable names. 
+#Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 library(data.table)
 library(tidyr)
 library(dplyr)
@@ -26,10 +39,10 @@ file_subject_test       <- file.path(dir, dir_test,  "subject_test.txt",    fsep
 
 # VERIFY EXISTENCE OF FULL DATASET 
 if(all(file.exists(c(file_activity_labels,    file_features,
-                 file_X_train,            file_y_train,    file_subject_train,
-                 file_X_test,             file_y_test,     file_subject_test))))
+                     file_X_train,            file_y_train,    file_subject_train,
+                     file_X_test,             file_y_test,     file_subject_test))))
 {
-
+        
         ActLabels <- fread(file_activity_labels, col.names = c("id", "desc"), header = FALSE,  
                            stringsAsFactors = FALSE)
         Features  <- t(fread(file_features,  drop = 1, col.names = c("desc"), header = FALSE, 
@@ -85,6 +98,10 @@ if(all(file.exists(c(file_activity_labels,    file_features,
         colnames(Output) <- gsub("mean\\(\\)", "mean", colnames(Output), ignore.case = FALSE)
         colnames(Output) <- gsub("\\-", "", colnames(Output))
         colnames(Output) <- tolower(colnames(Output))
+        
+        #MELT DATASET TO TURN IN TIDY DATA
+        Output <- melt(Output, id=c("subject","activity"), measure.vars=3:68, 
+                       variable.name = "measure", value.name = "mean")
         
         #SET OPTIONS TO SCIENTIFIC NOTATION
         options("scipen"=-100)

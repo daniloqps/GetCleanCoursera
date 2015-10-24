@@ -60,14 +60,24 @@ rm(FullTrain, FullTest)
 
 #TRANSFORM AND FREE
 TidyData <- CompleteSet %>% 
-                select(contains("activity"), contains("subject"), 
-                         contains("mean()"),contains("std()")) %>%
-                  mutate(activity = as.character(ActLabels$desc[activity]))
+        select(contains("activity"), contains("subject"), 
+               contains("mean()"),contains("std()")) %>%
+        mutate(activity = as.character(ActLabels$desc[activity]))
 rm(CompleteSet, ActLabels)
 
 #SUMMARIZE AND FREE
 Output <- TidyData %>% group_by(activity, subject) %>% summarize_each(funs(mean))
 rm(TidyData)
+
+#NORMALIZE DESCRIPTION - Just to Output
+colnames(Output) <- gsub("^t", "time", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("^f", "frequency", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("Acc", "accelerometer", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("Gyro", "gyroscope", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("std\\(\\)", "standarddeviation", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("mean\\(\\)", "mean", colnames(Output), ignore.case = FALSE)
+colnames(Output) <- gsub("\\-", "", colnames(Output))
+colnames(Output) <- tolower(colnames(Output))
 
 #SET OPTIONS TO SCIENTIFIC NOTATION
 options("scipen"=-100)

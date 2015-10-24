@@ -47,6 +47,11 @@ This variables has 2 domains, indicates by prefix "t" or "f":
 - Time domain signals. ex: tBodyAcc-mean()-X
 - Frequency domain signals. ex: fBodyAcc-mean()-X 
 
+and the units are:
+
+- Accelerometer Units: standard gravity units 'g'
+- Gyroscope: The units are radians/second. 
+
 and 
 
             "- Features are normalized and bounded within [-1,1]." [README.txt]

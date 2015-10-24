@@ -2,9 +2,11 @@
 
 Project to Coursera Specialization - Getting and Cleaning Data
 
-            References: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+            References: http://archive.ics.uci.edu/ml/datasets/Human+Activity
+                        +Recognition+Using+Smartphones
             
-            Raw Data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+            Raw Data: https://d396qusza40orc.cloudfront.net/
+                        getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
 
 
@@ -41,16 +43,18 @@ Now, we'll link this information with R Functions.
 
 R Language has many functions to load data, but in this case, the Dataset contains ~ 100mb, so we needed a very efficient function:
             
-            {data.table} fread : "Similar to read.table but faster and more convenient." R Documentation
+            {data.table} fread : "Similar to read.table but faster
+            and more convenient." R Documentation
 
 In this dataset, some informations was allocated in different files
 
 - Data Files: 'subject_train.txt', 'X_train.txt', 'y_train.txt', 'subject_test.txt', 'X_test.txt', 'y_test.txt'
 - Description Files: 'activity_labels.txt', 'features_info.txt'  
 
-The files 'X_train.txt' and 'X_test.txt' contains a lot of columns and we can bind the name of them direct in 'fread()'. So, we need to load 'features_info.txt' before, using the same 'fread()' function, but converting rows in columns to adjust with the parameter col.names in fread(). To do this we use t() function
+The files 'X_train.txt' and 'X_test.txt' contains a lot of columns and we can bind the name of them direct in 'fread()'. So, we need to load 'features_info.txt' before, using the same 'fread()' function, but converting rows in columns to adjust with the parameter 'col.names' in 'fread()'. To do this we use 't()' function
 
-            {base} t : "Given a matrix or data.frame x, t returns the transpose of x" R Documentation
+            {base} t : "Given a matrix or data.frame x, t returns
+            the transpose of x" R Documentation
 
 The other files contains basically the same parameters in 'fread()' to load.
 
@@ -139,7 +143,7 @@ This dataset has a lot of rows and invividually we can't analyze clearly, but us
             
 Summarize has 2 type: 'summarize()' to individually collumn and 'summarize_each()' to many collumn simultaneously. It's our case.
 
-            "Apply one or more functions to one or more columns. 
+            summarize_each() :"Apply one or more functions to one or more columns. 
             Grouping variables are always excluded from modification." R Documentation
             
 and the script

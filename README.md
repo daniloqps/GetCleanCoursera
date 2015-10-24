@@ -161,7 +161,7 @@ The pattern of an Tidy data is
 - Each variable you measure should be in one column; 
 - Each different observation of that variable should be in a different row
 
-So, to transform we can use 'melt()' function of {data.table} package and you can transform all collumns with measurements in values of an unique collumn
+So, to transform we can use 'melt()' function of {data.table} package and you can transform all collumns with measurements in values of an unique column
 
 ```r
         Output <- melt(Output, id=c("subject","activity"), measure.vars=3:68, 

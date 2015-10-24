@@ -154,7 +154,21 @@ and the script
                         summarize_each(funs(mean))
 ```
 
-##Step 5: Saving and Going Home!
+##Step 5: Melt dataset - Tidy Data
+
+The pattern of an Tidy data is 
+
+- Each variable you measure should be in one column; 
+- Each different observation of that variable should be in a different row
+
+So, to transform we can use 'melt()' function of {data.table} package and you can transform all collumns with measurements in values of an unique collumn
+
+```r
+        Output <- melt(Output, id=c("subject","activity"), measure.vars=3:68, 
+                       variable.name = "measure", value.name = "mean")
+```
+
+##Step 6: Saving and Going Home!
 
 To finish our job, the data must be saved in external file and 'write.table()' do this.
 

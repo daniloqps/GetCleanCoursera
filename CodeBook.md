@@ -71,7 +71,7 @@ The dataset have 6 additional files, that complements the information about the 
 - ActLabels: 6 Activity Labels used to describe the itens in LTrain and LTest. [activity_labels.txt]()
 - Features: Name of the measurements totally 561. [features.txt]()
 
-## Normalizing
+##Normalizing
 So, to normalize the raw-data described above and turn in tidy-data, we need to follow the next steps
 
 1. Bind the same data in only one file
@@ -88,6 +88,87 @@ So, to normalize the raw-data described above and turn in tidy-data, we need to 
 
             extract only 'Mean()' and 'Std()' for each measurement. 
 
+##Full Variable Description
+
+| Subject | Type    |
+|---------|---------|
+| 1..30   | Integer |
+
+| ID | Activity           | Type    |
+|----|--------------------|---------|
+| 1  | WALKING            | Integer |
+| 2  | WALKING_UPSTAIRS   | Integer |
+| 3  | WALKING_DOWNSTAIRS | Integer |
+| 4  | SITTING            | Integer |
+| 5  | STANDING           | Integer |
+| 6  | LAYING             | Integer |
 
 
-and the dataset is prepared to do what you need.
+| Measurement                                            | Type    | Unit                       | Domain    | Description                                                                      |
+|--------------------------------------------------------|---------|----------------------------|-----------|----------------------------------------------------------------------------------|
+| timebodyaccelerometermeanx                             | Numeric | standard gravity units 'g' | Time      | Mean of Body Acceleration Signal in X axis                                       |
+| timebodyaccelerometermeany                             | Numeric | standard gravity units 'g' | Time      | Mean of Body Acceleration Signal in Y axis                                       |
+| timebodyaccelerometermeanz                             | Numeric | standard gravity units 'g' | Time      | Mean of Body Acceleration Signal in Z axis                                       |
+| timegravityaccelerometermeanx                          | Numeric | standard gravity units 'g' | Time      | Mean of Gravity Acceleration Signal in X axis                                    |
+| timegravityaccelerometermeany                          | Numeric | standard gravity units 'g' | Time      | Mean of Gravity Acceleration Signal in Y axis                                    |
+| timegravityaccelerometermeanz                          | Numeric | standard gravity units 'g' | Time      | Mean of Gravity Acceleration Signal in Z axis                                    |
+| timebodyaccelerometerjerkmeanx                         | Numeric | standard gravity units 'g' | Time      | Mean of Jerk Signals of Body Linear Acceleration in X axis                       |
+| timebodyaccelerometerjerkmeany                         | Numeric | standard gravity units 'g' | Time      | Mean of Jerk Signals of Body Linear Acceleration in Y axis                       |
+| timebodyaccelerometerjerkmeanz                         | Numeric | standard gravity units 'g' | Time      | Mean of Jerk Signals of Body Linear Acceleration in Z axis                       |
+| timebodygyroscopemeanx                                 | Numeric | radians/second             | Time      | Mean of Body Gyroscope Signal in X axis                                          |
+| timebodygyroscopemeany                                 | Numeric | radians/second             | Time      | Mean of Body Gyroscope Signal in Y axis                                          |
+| timebodygyroscopemeanz                                 | Numeric | radians/second             | Time      | Mean of Body Gyroscope Signal in Z axis                                          |
+| timebodygyroscopejerkmeanx                             | Numeric | radians/second             | Time      | Mean of Jerk Signals of Body Gyroscope Signal in X axis                          |
+| timebodygyroscopejerkmeany                             | Numeric | radians/second             | Time      | Mean of Jerk Signals of Body Gyroscope Signal in Y axis                          |
+| timebodygyroscopejerkmeanz                             | Numeric | radians/second             | Time      | Mean of Jerk Signals of Body Gyroscope Signal in Z axis                          |
+| timebodyaccelerometermagmean                           | Numeric | standard gravity units 'g' | Time      | Mean of Magnitude of Body Acceleration Signal                                    |
+| timegravityaccelerometermagmean                        | Numeric | standard gravity units 'g' | Time      | Mean of Magnitude of Gravity Acceleration Signal                                 |
+| timebodyaccelerometerjerkmagmean                       | Numeric | standard gravity units 'g' | Time      | Mean of Magnitude of Jerk Signal of Body Acceleration Signal                     |
+| timebodygyroscopemagmean                               | Numeric | radians/second             | Time      | Mean of Magnitude of Body Gyroscope Signal                                       |
+| timebodygyroscopejerkmagmean                           | Numeric | radians/second             | Time      | Mean of Magnitude of Jerk Signal of Body Gyroscope Signal                        |
+| frequencybodyaccelerometermeanx                        | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Body Acceleration Signal in X axis                                |
+| frequencybodyaccelerometermeany                        | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Body Acceleration Signal in Y axis                                |
+| frequencybodyaccelerometermeanz                        | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Body Acceleration Signal in Z axis                                |
+| frequencybodyaccelerometerjerkmeanx                    | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Jerk Signals of Body Acceleration Signal in X axis                |
+| frequencybodyaccelerometerjerkmeany                    | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Jerk Signals of Body Acceleration Signal in Y axis                |
+| frequencybodyaccelerometerjerkmeanz                    | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Jerk Signals of Body Acceleration Signal in Z axis                |
+| frequencybodygyroscopemeanx                            | Numeric | radians/second             | Frequency | Mean of FFT of Body Gyroscope Signal in X axis                                   |
+| frequencybodygyroscopemeany                            | Numeric | radians/second             | Frequency | Mean of FFT of Body Gyroscope Signal in Y axis                                   |
+| frequencybodygyroscopemeanz                            | Numeric | radians/second             | Frequency | Mean of FFT of Body Gyroscope Signal in Z axis                                   |
+| frequencybodyaccelerometermagmean                      | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Magnitude of Body Acceleration Signal                             |
+| frequencybodybodyaccelerometerjerkmagmean              | Numeric | standard gravity units 'g' | Frequency | Mean of FFT of Magnitude of JerkSignal of Body Acceleration Signal               |
+| frequencybodybodygyroscopemagmean                      | Numeric | radians/second             | Frequency | Mean of FFT of Magnitude of Body Gyroscope  Signal                               |
+| frequencybodybodygyroscopejerkmagmean                  | Numeric | radians/second             | Frequency | Mean of FFT of Magnitude of JerkSignal of Body Gyroscope Signal                  |
+| timebodyaccelerometerstandarddeviationx                | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Body Acceleration Signal in X axis                         |
+| timebodyaccelerometerstandarddeviationy                | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Body Acceleration Signal in Y axis                         |
+| timebodyaccelerometerstandarddeviationz                | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Body Acceleration Signal in Z axis                         |
+| timegravityaccelerometerstandarddeviationx             | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Gravity Acceleration Signal in X axis                      |
+| timegravityaccelerometerstandarddeviationy             | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Gravity Acceleration Signal in Y axis                      |
+| timegravityaccelerometerstandarddeviationz             | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Gravity Acceleration Signal in Z axis                      |
+| timebodyaccelerometerjerkstandarddeviationx            | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Jerk Signals of Body Linear Acceleration in X axis         |
+| timebodyaccelerometerjerkstandarddeviationy            | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Jerk Signals of Body Linear Acceleration in Y axis         |
+| timebodyaccelerometerjerkstandarddeviationz            | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Jerk Signals of Body Linear Acceleration in Z axis         |
+| timebodygyroscopestandarddeviationx                    | Numeric | radians/second             | Time      | Standard Deviation of Body Gyroscope Signal in X axis                            |
+| timebodygyroscopestandarddeviationy                    | Numeric | radians/second             | Time      | Standard Deviation of Body Gyroscope Signal in Y axis                            |
+| timebodygyroscopestandarddeviationz                    | Numeric | radians/second             | Time      | Standard Deviation of Body Gyroscope Signal in Z axis                            |
+| timebodygyroscopejerkstandarddeviationx                | Numeric | radians/second             | Time      | Standard Deviation of Jerk Signals of Body Gyroscope Signal in X axis            |
+| timebodygyroscopejerkstandarddeviationy                | Numeric | radians/second             | Time      | Standard Deviation of Jerk Signals of Body Gyroscope Signal in Y axis            |
+| timebodygyroscopejerkstandarddeviationz                | Numeric | radians/second             | Time      | Standard Deviation of Jerk Signals of Body Gyroscope Signal in Z axis            |
+| timebodyaccelerometermagstandarddeviation              | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Magnitude of Body Acceleration Signal                      |
+| timegravityaccelerometermagstandarddeviation           | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Magnitude of Gravity Acceleration Signal                   |
+| timebodyaccelerometerjerkmagstandarddeviation          | Numeric | standard gravity units 'g' | Time      | Standard Deviation of Magnitude of Jerk Signal of Body Acceleration Signal       |
+| timebodygyroscopemagstandarddeviation                  | Numeric | radians/second             | Time      | Standard Deviation of Magnitude of Body Gyroscope Signal                         |
+| timebodygyroscopejerkmagstandarddeviation              | Numeric | radians/second             | Time      | Standard Deviation of Magnitude of Jerk Signal of Body Gyroscope Signal          |
+| frequencybodyaccelerometerstandarddeviationx           | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Body Acceleration Signal in X axis                  |
+| frequencybodyaccelerometerstandarddeviationy           | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Body Acceleration Signal in Y axis                  |
+| frequencybodyaccelerometerstandarddeviationz           | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Body Acceleration Signal in Z axis                  |
+| frequencybodyaccelerometerjerkstandarddeviationx       | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Jerk Signals of Body Acceleration Signal in X axis  |
+| frequencybodyaccelerometerjerkstandarddeviationy       | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Jerk Signals of Body Acceleration Signal in Y axis  |
+| frequencybodyaccelerometerjerkstandarddeviationz       | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Jerk Signals of Body Acceleration Signal in Z axis  |
+| frequencybodygyroscopestandarddeviationx               | Numeric | radians/second             | Frequency | Standard Deviation of FFT of Body Gyroscope Signal in X axis                     |
+| frequencybodygyroscopestandarddeviationy               | Numeric | radians/second             | Frequency | Standard Deviation of FFT of Body Gyroscope Signal in Y axis                     |
+| frequencybodygyroscopestandarddeviationz               | Numeric | radians/second             | Frequency | Standard Deviation of FFT of Body Gyroscope Signal in Z axis                     |
+| frequencybodyaccelerometermagstandarddeviation         | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Magnitude of Body Acceleration Signal               |
+| frequencybodybodyaccelerometerjerkmagstandarddeviation | Numeric | standard gravity units 'g' | Frequency | Standard Deviation of FFT of Magnitude of JerkSignal of Body Acceleration Signal |
+| frequencybodybodygyroscopemagstandarddeviation         | Numeric | radians/second             | Frequency | Standard Deviation of FFT of Magnitude of Body Gyroscope  Signal                 |
+| frequencybodybodygyroscopejerkmagstandarddeviation     | Numeric | radians/second             | Frequency | Standard Deviation of FFT of Magnitude of JerkSignal of Body Gyroscope Signal    |
